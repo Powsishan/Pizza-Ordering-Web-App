@@ -33,6 +33,11 @@ The Pizza Ordering Web App is a full-stack application that allows users to brow
 - **Database**: MongoDB
 - **Version Control**: Git, GitHub
 
+## 🎨 Design Inspiration
+
+The design of this web app was inspired by a Figma template, but all designs were created and customized by me using **Canva** for a unique and tailored look.
+
+
 ## ⚙️ Installation
 
 To get a local copy of the project up and running, follow these steps:
