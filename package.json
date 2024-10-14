@@ -1,0 +1,14 @@
+{
+  "name": "pizza", 
+  "version": "1.0.0",
+  "description": " pizza ordering web application using React.js and Tailwind CSS for the frontendt",
+  "scripts": {
+    "start": "concurrently \"npm start --prefix frontend\" \"npm start --prefix backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "dependencies": {
+   
+  }
+}

@@ -1,0 +1,15 @@
+.custom-calendar .react-datepicker__header {
+    background-color: #e90028;
+  }
+  
+  .custom-calendar .react-datepicker__day--selected,
+  .custom-calendar .react-datepicker__day--keyboard-selected {
+    background-color: #e90028 !important;
+    color: white;
+  }
+  
+  .custom-calendar .react-datepicker__current-month,
+  .custom-calendar .react-datepicker__day-name {
+    color: white;
+  }
+  
