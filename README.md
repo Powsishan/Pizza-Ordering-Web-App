@@ -43,30 +43,28 @@ To get a local copy of the project up and running, follow these steps:
    git clone https://github.com/Powsishan/Pizza-Ordering-Web-App.git
 Navigate to the project directory:
 
-bash
-
 cd Pizza-Ordering-Web-App
-Install backend dependencies:
 
-bash
 
+**Install backend dependencies:**
 cd backend
 npm install
-Install frontend dependencies:
 
-bash
 
+**Install frontend dependencies:**
 cd ../frontend
 npm install
+
+
 Create a .env file in the backend directory and configure your environment variables, including the MongoDB connection string.
 
 Usage
 To start both the frontend and backend servers simultaneously, run the following command from the root directory of the project:
 
-bash
 
-npm start
-This command utilizes concurrently to start both servers. Open your web browser and go to http://localhost:3000 to view the application.
+
+**npm start**
+This command is utilised concurrently to start both servers. Open your web browser and go to http://localhost:3000 to view the application.
 
 Admin Dashboard
 Tech Stack
