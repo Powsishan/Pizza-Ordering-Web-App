@@ -4,7 +4,7 @@
 
 The Pizza Ordering Web App is a full-stack application that allows users to browse a menu, customize their pizza orders, and make reservations. The application features an admin dashboard for managing the pizza menu and reservations, built with a modern tech stack.
 
-##📑 Table of Contents
+## 📑 Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -22,7 +22,7 @@ The Pizza Ordering Web App is a full-stack application that allows users to brow
 - **Search Functionality**: The admin dashboard includes a search feature that allows searching for pizzas or reservations.
 - **Responsive Design**: Enjoy a seamless experience on both desktop and mobile devices.
 
-##💻 Tech Stack
+## 💻 Tech Stack
 
 - **Frontend**: 
   - React.js
@@ -33,7 +33,7 @@ The Pizza Ordering Web App is a full-stack application that allows users to brow
 - **Database**: MongoDB
 - **Version Control**: Git, GitHub
 
-##⚙️ Installation
+## ⚙️ Installation
 
 To get a local copy of the project up and running, follow these steps:
 
