@@ -164,5 +164,3 @@ Admin can update the reservation status
 
 License
 Distributed under the MIT License.
-
-give me all of these in read me file make to attractive 
