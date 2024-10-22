@@ -16,50 +16,70 @@ const Reservation = () => {
     const [errors, setErrors] = useState({}); 
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        setErrors({}); 
+      e.preventDefault();
+      setErrors({});
+  
+      const newErrors = {};
+  
+      // Get current date and time
+      const currentDate = new Date();
+      const selectedDate = new Date(ReservationDate);
+      const currentTime = currentDate.toTimeString().slice(0, 5); // HH:mm format
+      const selectedTime = ReservationTime;
+  
+      // Validate date and time
+      if (!ReservationDate) {
 
-        const newErrors = {};
-        if (!ContactName.trim()) newErrors.ContactName = 'Contact Name is required.';
-        if (!ContactNumber.match(/^\d{10}$/)) newErrors.ContactNumber = 'Contact Number must be 10 digits.';
-        if (!ReservationDate) newErrors.ReservationDate = 'Reservation Date is required.';
-        if (!ReservationTime) newErrors.ReservationTime = 'Reservation Time is required.';
-        if (!NumberOfPeople || NumberOfPeople <= 0) newErrors.NumberOfPeople = 'Number of People must be greater than 0.';
-
-        if (Object.keys(newErrors).length > 0) {
-            setErrors(newErrors);
-            return;
-        }
-
-        const reservationData = {
-            CustomerName: ContactName,
-            ContactNumber,
-            ReservationDate,
-            ReservationTime,
-            NumberOfPeople: parseInt(NumberOfPeople, 10), 
-            Message,
-        };
-
-        console.log('Reservation Data:', reservationData); 
-
-        try {
-            const response = await addReservation(reservationData);
-            console.log('Reservation successfully made:', response);
-
-            toast.success('Reservation successfully made!');
-
-            setDate('');
-            setTime('');
-            setGuests('');
-            setContactName('');
-            setContactNumber('');
-            setMessage('');
-        } catch (error) {
-            console.error('Error making reservation:', error);
-
-            toast.error('There was an error making the reservation. Please try again.');
-        }
-    };
+          newErrors.ReservationDate = 'Reservation Date is required.';
+      } else if (selectedDate < currentDate.setHours(0, 0, 0, 0)) {
+          newErrors.ReservationDate = 'Reservation Date cannot be in the past.';
+      }
+  
+      if (!ReservationTime) {
+          newErrors.ReservationTime = 'Reservation Time is required.';
+      } else if (selectedDate.toDateString() === currentDate.toDateString() && selectedTime < currentTime) {
+          newErrors.ReservationTime = 'For today, the Reservation Time must be in the future.';
+      }
+  
+      if (!ContactName.trim()) newErrors.ContactName = 'Contact Name is required.';
+      if (!ContactNumber.match(/^\d{10}$/)) newErrors.ContactNumber = 'Contact Number must be 10 digits.';
+      if (!NumberOfPeople || NumberOfPeople <= 0) newErrors.NumberOfPeople = 'Number of People must be greater than 0.';
+  
+      if (Object.keys(newErrors).length > 0) {
+          setErrors(newErrors);
+          return;
+      }
+  
+      const reservationData = {
+          CustomerName: ContactName,
+          ContactNumber,
+          ReservationDate,
+          ReservationTime,
+          NumberOfPeople: parseInt(NumberOfPeople, 10),
+          Message,
+      };
+  
+      console.log('Reservation Data:', reservationData);
+  
+      try {
+          const response = await addReservation(reservationData);
+          console.log('Reservation successfully made:', response);
+  
+          toast.success('Reservation successfully made!');
+  
+          setDate('');
+          setTime('');
+          setGuests('');
+          setContactName('');
+          setContactNumber('');
+          setMessage('');
+      } catch (error) {
+          console.error('Error making reservation:', error);
+  
+          toast.error('There was an error making the reservation. Please try again.');
+      }
+  };
+  
 
     return (
         <>

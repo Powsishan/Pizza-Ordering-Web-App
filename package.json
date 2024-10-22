@@ -1,5 +1,5 @@
 {
-  "name": "pizza", 
+  "name": "pizza",
   "version": "1.0.0",
   "description": " pizza ordering web application using React.js and Tailwind CSS for the frontendt",
   "scripts": {
@@ -9,6 +9,6 @@
     "concurrently": "^9.0.1"
   },
   "dependencies": {
-   
+    "joi": "^17.13.3"
   }
 }

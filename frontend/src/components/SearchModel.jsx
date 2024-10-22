@@ -7,12 +7,14 @@ const SearchModal = ({ isOpen, onClose }) => {
     const [filteredPizzas, setFilteredPizzas] = useState([]);
 
     useEffect(() => {
-
         const filtered = state.pizzas.filter(pizza =>
-            pizza.Name.toLowerCase().includes(searchTerm.toLowerCase())
+            pizza.Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            pizza.Description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            pizza.Price.toString().includes(searchTerm)
         );
         setFilteredPizzas(filtered);
     }, [searchTerm, state.pizzas]);
+    
 
     const handleBackdropClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -38,13 +40,16 @@ const SearchModal = ({ isOpen, onClose }) => {
 
                     <div className="mt-4">
                         {searchTerm && filteredPizzas.length > 0 ? (
-                            <ul className="max-h-48 overflow-y-auto">
-                                {filteredPizzas.map((pizza) => (
-                                    <li key={pizza.id} className="py-1 hover:bg-[#f0f0f0] bg-white  transition duration-200 ease-in-out">
-                                        {pizza.Name}
-                                    </li>
-                                ))}
-                            </ul>
+                           <ul className="max-h-48 overflow-y-auto">
+                           {filteredPizzas.map((pizza) => (
+                               <li key={pizza.id} className="py-2 px-4 hover:bg-[#f0f0f0] bg-white transition duration-200 ease-in-out rounded mb-2">
+                                   <div><strong>Name:</strong> {pizza.Name}</div>
+                                   <div><strong>Description:</strong> {pizza.Description}</div>
+                                   <div><strong>Price:</strong> ${pizza.Price}</div>
+                               </li>
+                           ))}
+                       </ul>
+                       
                         ) : searchTerm ? (
                             <p className="text-center text-gray-600">No results found</p>
                         ) : null}

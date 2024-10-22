@@ -6,6 +6,8 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { ToastContainer, toast } from 'react-toastify';
 import { addPizza, updatePizza, deletePizza } from '../../services/pizzaService';
+import Joi from 'joi';
+
 
 const ManagePizza = () => {
     const { state, fetchPizzas } = usePizza();
@@ -116,6 +118,9 @@ const ManagePizza = () => {
         if (typeof pizza.Price !== 'number' || pizza.Price < 0) {
 
             errors.push("Price must be a positive number.");
+        }if(!pizza.Image){
+            errors.push("Please Choose an image");
+
         }
         return errors.length > 0 ? errors : null;
     };

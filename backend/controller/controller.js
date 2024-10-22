@@ -272,36 +272,6 @@ const updateReservationStatus = async (req, res, next) => {
 
 
 
-const searchPizzas = async (req, res, next) => {
-    try {
-        const { name, minPrice, maxPrice } = req.query;
-
-        // Build a dynamic search query object
-        let searchQuery = {};
-
-        if (name) {
-            // Case-insensitive search for pizza name
-            searchQuery.Name = { $regex: name, $options: 'i' }; 
-        }
-
-        if (minPrice || maxPrice) {
-            searchQuery.Price = {};
-            if (minPrice) {
-                searchQuery.Price.$gte = parseFloat(minPrice);
-            }
-            if (maxPrice) {
-                searchQuery.Price.$lte = parseFloat(maxPrice);
-            }
-        }
-
-        const pizzas = await Pizza.find(searchQuery);
-        res.status(200).json({ pizzas });
-    } catch (error) {
-        next({ statusCode: 500, message: 'Internal Server Error' });
-    }
-};
-
-
 module.exports = {
     userLogin,
     registerUser,
@@ -312,6 +282,6 @@ module.exports = {
     addReservation,
     updateReservation,
     updateReservationStatus,
-    searchPizzas,
+ 
     getReservation
 };
